@@ -5,16 +5,22 @@ interface DropdownSelectorProps {
   value: string
   onChange: (value: string) => void
   placeholder?: string
+  className?: string
 }
 
 const DropdownSelector: React.FC<DropdownSelectorProps> = ({
   options,
   value,
   onChange,
-  placeholder
+  placeholder,
+  className
 }) => {
   return (
-    <select value={value} onChange={e => onChange(e.target.value)}>
+    <select
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      className={`dropdown-selector ${className || ''}`}
+    >
       {!value && placeholder && <option value="">{placeholder}</option>}
       {options.map(option => (
         <option key={option} value={option}>

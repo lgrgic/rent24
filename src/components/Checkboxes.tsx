@@ -19,20 +19,19 @@ const Checkboxes: React.FC<CheckboxesProps> = ({
     onChange(updatedOptions)
   }
 
-  console.log(selectedOptions)
-
   return (
-    <div>
+    <div className="checkbox-container">
       {options.map(option => (
-        <label key={option}>
+        <div key={option} className="checkbox-item">
           <input
             type="checkbox"
+            id={`checkbox-${option}`}
             value={option}
             checked={selectedOptions.includes(option)}
             onChange={() => handleCheckboxChange(option)}
           />
-          {option}
-        </label>
+          <label htmlFor={`checkbox-${option}`}>{option}</label>
+        </div>
       ))}
     </div>
   )

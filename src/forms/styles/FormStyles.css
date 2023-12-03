@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #f8f8f8;
+  --secondary-color: #fff;
+  --text-color: #333;
+}
+
+.form-wrapper {
+  max-width: 600px;
+  min-width: 500px;
+  width: 80%;
+  min-height: 300px;
+  height: auto;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    width: 90%;
+    padding: 15px;
+    display: contents;
+  }
+}
+
+.step-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.step-counter span {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.step-content {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 768px) {
+  .step-content {
+    margin: 20px;
+  }
+}
+
+.step-one {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+p.error-message {
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+button {
+  width: 150px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

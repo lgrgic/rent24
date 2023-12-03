@@ -39,9 +39,19 @@ const userDataReducer = (state = initialUserData, action: any) => {
   }
 }
 
+const isEmailValidReducer = (state = true, action: any) => {
+  switch (action.type) {
+    case 'SET_EMAIL_VALID':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const rootReducer = combineReducers({
   cities: citiesReducer,
   selectedCity: selectedCityReducer,
   numericOptions: numericOptionsReducer,
-  userData: userDataReducer
+  userData: userDataReducer,
+  isEmailValid: isEmailValidReducer
 })

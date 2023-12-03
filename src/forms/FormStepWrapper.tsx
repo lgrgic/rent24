@@ -3,6 +3,7 @@ import StepCounter from './StepCounter'
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
+import './styles/FormStyles.css'
 
 interface FormStepWrapperProps {
   totalSteps: number
@@ -28,26 +29,29 @@ const FormStepWrapper: React.FC<FormStepWrapperProps> = ({ totalSteps }) => {
   }
 
   return (
-    <div>
+    <div className="form-wrapper">
       <StepCounter currentStep={currentStep} totalSteps={totalSteps} />
-      {currentStep === 1 && (
-        <StepOne onNext={handleNext} onPrevious={handlePrevious} />
-      )}
-      {currentStep === 2 && (
-        <StepTwo
-          currentStep={currentStep}
-          onNext={handleNext}
-          onPrevious={handlePrevious}
-        />
-      )}
-      {currentStep === 3 && (
-        <StepThree
-          currentStep={currentStep}
-          onNext={handleNext}
-          onPrevious={handlePrevious}
-          modalClose={handleModalClose}
-        />
-      )}
+
+      <div className="step-content">
+        {currentStep === 1 && (
+          <StepOne onNext={handleNext} onPrevious={handlePrevious} />
+        )}
+        {currentStep === 2 && (
+          <StepTwo
+            currentStep={currentStep}
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+          />
+        )}
+        {currentStep === 3 && (
+          <StepThree
+            currentStep={currentStep}
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+            modalClose={handleModalClose}
+          />
+        )}
+      </div>
     </div>
   )
 }

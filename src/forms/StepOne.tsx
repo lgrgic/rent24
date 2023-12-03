@@ -21,7 +21,7 @@ const StepOne: React.FC<StepOneProps> = ({ onNext }) => {
   }
 
   return (
-    <>
+    <div className="container">
       <p>Select a city from the dropdown below:</p>
       <DropdownSelector
         options={cities}
@@ -29,10 +29,19 @@ const StepOne: React.FC<StepOneProps> = ({ onNext }) => {
         onChange={handleCityChange}
         placeholder={placeholder}
       />
-      <Button onClick={onNext} disabled={!selectedCity}>
-        Next
-      </Button>
-    </>
+      <div className="button-container">
+        <Button
+          onClick={onNext}
+          disabled={!selectedCity}
+          style={{
+            marginRight: 0,
+            backgroundColor: !selectedCity ? 'grey' : '#a9865b'
+          }}
+        >
+          Next
+        </Button>
+      </div>
+    </div>
   )
 }
 

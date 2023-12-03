@@ -28,8 +28,20 @@ const numericOptionsReducer = (state: number[] = [], action: any) => {
   }
 }
 
+const initialUserData = { firstName: '', lastName: '', email: '' }
+
+const userDataReducer = (state = initialUserData, action: any) => {
+  switch (action.type) {
+    case 'SET_USER_DATA':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const rootReducer = combineReducers({
   cities: citiesReducer,
   selectedCity: selectedCityReducer,
-  numericOptions: numericOptionsReducer
+  numericOptions: numericOptionsReducer,
+  userData: userDataReducer
 })

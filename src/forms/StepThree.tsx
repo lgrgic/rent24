@@ -7,9 +7,9 @@ import {
   setCity,
   setEmailValid
 } from '../redux/actions'
-import Button from '../components/Button'
-import Input from '../components/Input'
-import Modal from '../components/Modal'
+import Button from '../components/Button/Button'
+import Input from '../components/Input/Input'
+import Modal from '../components/Modal/Modal'
 import './styles/styles.css'
 
 interface StepThreeProps {
@@ -127,7 +127,6 @@ const StepThree: React.FC<StepThreeProps> = ({
           disabled={disabledButton}
           style={{
             marginRight: 0
-            // backgroundColor: disabledButton ? 'grey' : '#a9865b'
           }}
         >
           Confirm

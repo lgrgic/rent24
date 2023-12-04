@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/styles.css'
+import './styles.css'
 
 interface InputProps {
   id: string
@@ -7,7 +7,7 @@ interface InputProps {
   type?: string
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  style?: any
+  style?: React.CSSProperties
 }
 
 const Input: React.FC<InputProps> = ({

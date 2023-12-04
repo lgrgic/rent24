@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../redux/store'
 import { setCity } from '../redux/actions'
-import DropdownSelector from '../components/DropdownSelector'
-import Button from '../components/Button'
+import DropdownSelector from '../components/DropdownSelector/DropdownSelector'
+import Button from '../components/Button/Button'
 
 interface StepOneProps {
   onNext: () => void

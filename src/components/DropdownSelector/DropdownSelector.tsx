@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './styles/styles.css' // Replace with the path to your CSS file
+import './styles.css'
 
 interface CustomDropdownSelectorProps {
   options: string[]

@@ -1,12 +1,13 @@
 import React from 'react'
+import './styles.css'
 
-interface CheckboxesProps {
+interface CheckboxProps {
   options: number[]
   selectedOptions: number[]
   onChange: (selectedOptions: number[]) => void
 }
 
-const Checkboxes: React.FC<CheckboxesProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   options,
   selectedOptions,
   onChange
@@ -37,4 +38,4 @@ const Checkboxes: React.FC<CheckboxesProps> = ({
   )
 }
 
-export default Checkboxes
+export default Checkbox

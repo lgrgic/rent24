@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from './Button'
-import './styles/styles.css'
+import Button from '../Button/Button'
+import './styles.css'
 
 interface ModalProps {
   children: any

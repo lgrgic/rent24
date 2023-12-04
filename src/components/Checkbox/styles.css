@@ -1,0 +1,29 @@
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: end;
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+label {
+  user-select: none;
+}
+
+input[type='checkbox']:checked + label {
+  color: #b89c78;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}

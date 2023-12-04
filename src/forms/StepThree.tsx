@@ -10,7 +10,7 @@ import {
 import Button from '../components/Button'
 import Input from '../components/Input'
 import Modal from '../components/Modal'
-import './styles/FormStyles.css'
+import './styles/styles.css'
 
 interface StepThreeProps {
   modalClose: () => void
@@ -29,6 +29,7 @@ const StepThree: React.FC<StepThreeProps> = ({
   const userData = useSelector((state: RootState) => state.userData)
   const isEmailValid = useSelector((state: RootState) => state.isEmailValid)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [emailErrorMessage, setEmailErrorMessage] = useState('')
   const dispatch = useDispatch()
 
@@ -60,19 +61,24 @@ const StepThree: React.FC<StepThreeProps> = ({
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
+    setIsSubmitted(true)
 
     dispatch(setCity(''))
 
     dispatch(setUserData({ firstName: '', lastName: '', email: '' }))
 
     dispatch(setNumericOptions([]))
+  }
 
+  const handleCloseSubmission = () => {
     modalClose()
   }
 
   const handleCancelModal = () => {
     setIsModalOpen(false)
   }
+
+  const subbmisionText = 'Thank you for your submission!'
 
   const optionsText = numericOptions.length === 1 ? 'Option' : 'Options'
   const disabledButton =
@@ -120,8 +126,8 @@ const StepThree: React.FC<StepThreeProps> = ({
           onClick={handleSubmit}
           disabled={disabledButton}
           style={{
-            marginRight: 0,
-            backgroundColor: disabledButton ? 'grey' : '#a9865b'
+            marginRight: 0
+            // backgroundColor: disabledButton ? 'grey' : '#a9865b'
           }}
         >
           Confirm
@@ -133,14 +139,30 @@ const StepThree: React.FC<StepThreeProps> = ({
           <div className="modal-overlay" />
           <Modal onSubmit={handleCloseModal} onCancel={handleCancelModal}>
             <h2>Review and submit:</h2>
-            <p>City: {selectedCity}</p>
-            <p>
-              {optionsText} selected: {numericOptions.join(', ')}
-            </p>
-            <p>First name: {userData.firstName}</p>
-            <p>Last name: {userData.lastName}</p>
-            <p>Email: {userData.email}</p>
+            <div className="review-info">
+              <p>City: {selectedCity}</p>
+              <p>
+                {optionsText} selected: {numericOptions.join(', ')}
+              </p>
+              <p>First name: {userData.firstName}</p>
+              <p>Last name: {userData.lastName}</p>
+              <p>Email: {userData.email}</p>
+            </div>
           </Modal>
+        </>
+      )}
+      {!isModalOpen && isSubmitted && (
+        <>
+          <div className="modal-overlay" />
+          <div className="modal-container">
+            <Modal
+              onSubmit={handleCloseSubmission}
+              buttonText={'Close'}
+              style={{ textAlign: 'right' }}
+            >
+              <h2>{subbmisionText}</h2>
+            </Modal>
+          </div>
         </>
       )}
     </div>

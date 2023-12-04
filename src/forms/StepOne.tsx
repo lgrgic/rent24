@@ -34,8 +34,7 @@ const StepOne: React.FC<StepOneProps> = ({ onNext }) => {
           onClick={onNext}
           disabled={!selectedCity}
           style={{
-            marginRight: 0,
-            backgroundColor: !selectedCity ? 'grey' : '#a9865b'
+            marginRight: 0
           }}
         >
           Next

@@ -3,7 +3,7 @@ import StepCounter from './StepCounter'
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
-import './styles/FormStyles.css'
+import './styles/styles.css'
 
 interface FormStepWrapperProps {
   totalSteps: number

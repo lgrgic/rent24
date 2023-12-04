@@ -10,9 +10,11 @@ const StepCounter: React.FC<StepCounterProps> = ({
   totalSteps
 }) => {
   return (
-    <h2>
-      Step {currentStep} of {totalSteps}
-    </h2>
+    <div className="counter-container">
+      <h2>
+        Step {currentStep} of {totalSteps}
+      </h2>
+    </div>
   )
 }
 

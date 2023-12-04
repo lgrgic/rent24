@@ -5,7 +5,6 @@ import { setNumericOptions } from '../redux/actions'
 import Checkboxes from '../components/Checkboxes'
 import Button from '../components/Button'
 import { numOptions } from '../data/options'
-import './styles/FormStyles.css'
 
 interface StepTwoProps {
   currentStep: number
@@ -35,8 +34,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ onNext, onPrevious }) => {
           onClick={onNext}
           disabled={!numericOptions.length}
           style={{
-            marginRight: 0,
-            backgroundColor: !numericOptions.length ? 'grey' : '#a9865b'
+            marginRight: 0
           }}
         >
           Next

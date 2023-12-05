@@ -1,38 +1,45 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../redux/store'
-import { setNumericOptions } from '../redux/actions'
+import { setCheckboxOptions } from '../redux/actions'
 import Checkboxes from '../components/Checkbox/Checkbox'
 import Button from '../components/Button/Button'
-import { numOptions } from '../data/options'
+import { options } from '../data/options'
 
-interface StepTwoProps {
+interface CheckboxStepProps {
   currentStep: number
   onNext: () => void
   onPrevious: () => void
+  title: string
 }
 
-const StepTwo: React.FC<StepTwoProps> = ({ onNext, onPrevious }) => {
-  const numericOptions = useSelector((state: RootState) => state.numericOptions)
+const CheckboxStep: React.FC<CheckboxStepProps> = ({
+  onNext,
+  onPrevious,
+  title
+}) => {
+  const checkboxOptions = useSelector(
+    (state: RootState) => state.checkboxOptions
+  )
   const dispatch = useDispatch()
 
-  const handleNumericOptionsChange = (selectedOptions: number[]) => {
-    dispatch(setNumericOptions(selectedOptions))
+  const handleCheckboxOptionsChange = (selectedOptions: number[]) => {
+    dispatch(setCheckboxOptions(selectedOptions))
   }
 
   return (
     <div className="container">
-      <p>Select options:</p>
+      <p>{title}:</p>
       <Checkboxes
-        options={numOptions}
-        selectedOptions={numericOptions}
-        onChange={handleNumericOptionsChange}
+        options={options}
+        selectedOptions={checkboxOptions}
+        onChange={handleCheckboxOptionsChange}
       />
       <div className="button-container">
         <Button onClick={onPrevious}>Back</Button>
         <Button
           onClick={onNext}
-          disabled={!numericOptions.length}
+          disabled={!checkboxOptions.length}
           style={{
             marginRight: 0
           }}
@@ -44,4 +51,4 @@ const StepTwo: React.FC<StepTwoProps> = ({ onNext, onPrevious }) => {
   )
 }
 
-export default StepTwo
+export default CheckboxStep

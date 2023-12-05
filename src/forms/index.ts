@@ -1,5 +1,5 @@
-export { default as StepOne } from './StepOne'
-export { default as StepTwo } from './StepTwo'
-export { default as StepThree } from './StepThree'
+export { default as DropdownStep } from './DropdownStep'
+export { default as CheckboxStep } from './CheckboxStep'
+export { default as InputStep } from './InputStep'
 export { default as StepCounter } from './StepCounter'
 export { default as FormStepWrapper } from './FormStepWrapper'

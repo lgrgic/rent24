@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import StepCounter from './StepCounter'
-import StepOne from './StepOne'
-import StepTwo from './StepTwo'
-import StepThree from './StepThree'
+import DropdownStep from './DropdownStep'
+import CheckboxStep from './CheckboxStep'
+import InputStep from './InputStep'
 import './styles/styles.css'
 
 interface FormStepWrapperProps {
@@ -11,6 +11,12 @@ interface FormStepWrapperProps {
 
 const FormStepWrapper: React.FC<FormStepWrapperProps> = ({ totalSteps }) => {
   const [currentStep, setCurrentStep] = useState(1)
+
+  const placeholder = 'Choose city'
+  const description = 'Select a city from the dropdown below:'
+  const checkBoxTitle = 'Select your option'
+  const subbmisionText = 'Thank you for your submission!'
+  const title = 'Enter your information'
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
@@ -34,21 +40,29 @@ const FormStepWrapper: React.FC<FormStepWrapperProps> = ({ totalSteps }) => {
 
       <div className="step-content">
         {currentStep === 1 && (
-          <StepOne onNext={handleNext} onPrevious={handlePrevious} />
+          <DropdownStep
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+            placeholder={placeholder}
+            description={description}
+          />
         )}
         {currentStep === 2 && (
-          <StepTwo
+          <CheckboxStep
             currentStep={currentStep}
             onNext={handleNext}
             onPrevious={handlePrevious}
+            title={checkBoxTitle}
           />
         )}
         {currentStep === 3 && (
-          <StepThree
+          <InputStep
             currentStep={currentStep}
             onNext={handleNext}
             onPrevious={handlePrevious}
             modalClose={handleModalClose}
+            submissionText={subbmisionText}
+            title={title}
           />
         )}
       </div>

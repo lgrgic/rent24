@@ -1,10 +1,10 @@
-export const setCity = (city: string) => ({
-  type: 'SET_SELECTED_CITY',
-  payload: city
+export const setSelectedItem = (item: string) => ({
+  type: 'SET_SELECTED_ITEM',
+  payload: item
 })
 
-export const setNumericOptions = (options: number[]) => ({
-  type: 'SET_NUMERIC_OPTIONS',
+export const setCheckboxOptions = (options: number[]) => ({
+  type: 'SET_CHECKBOX_OPTIONS',
   payload: options
 })
 

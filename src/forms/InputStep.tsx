@@ -3,29 +3,35 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../redux/store'
 import {
   setUserData,
-  setNumericOptions,
-  setCity,
-  setEmailValid
+  setCheckboxOptions,
+  setEmailValid,
+  setSelectedItem
 } from '../redux/actions'
 import Button from '../components/Button/Button'
 import Input from '../components/Input/Input'
 import Modal from '../components/Modal/Modal'
 import './styles/styles.css'
 
-interface StepThreeProps {
+interface InputStepProps {
   modalClose: () => void
   currentStep: number
   onNext: () => void
   onPrevious: () => void
+  submissionText: string
+  title: string
 }
 
-const StepThree: React.FC<StepThreeProps> = ({
+const InputStep: React.FC<InputStepProps> = ({
   onNext,
   onPrevious,
-  modalClose
+  modalClose,
+  submissionText,
+  title
 }) => {
-  const selectedCity = useSelector((state: RootState) => state.selectedCity)
-  const numericOptions = useSelector((state: RootState) => state.numericOptions)
+  const selectedItem = useSelector((state: RootState) => state.selectedItem)
+  const checkboxOptions = useSelector(
+    (state: RootState) => state.checkboxOptions
+  )
   const userData = useSelector((state: RootState) => state.userData)
   const isEmailValid = useSelector((state: RootState) => state.isEmailValid)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -63,11 +69,11 @@ const StepThree: React.FC<StepThreeProps> = ({
     setIsModalOpen(false)
     setIsSubmitted(true)
 
-    dispatch(setCity(''))
+    dispatch(setSelectedItem(''))
 
     dispatch(setUserData({ firstName: '', lastName: '', email: '' }))
 
-    dispatch(setNumericOptions([]))
+    dispatch(setCheckboxOptions([]))
   }
 
   const handleCloseSubmission = () => {
@@ -78,9 +84,7 @@ const StepThree: React.FC<StepThreeProps> = ({
     setIsModalOpen(false)
   }
 
-  const subbmisionText = 'Thank you for your submission!'
-
-  const optionsText = numericOptions.length === 1 ? 'Option' : 'Options'
+  const optionsText = checkboxOptions.length === 1 ? 'Option' : 'Options'
   const disabledButton =
     !userData.firstName ||
     !userData.lastName ||
@@ -89,7 +93,7 @@ const StepThree: React.FC<StepThreeProps> = ({
 
   return (
     <div className="step-three-container">
-      <p>Enter your information:</p>
+      <p>{title}</p>
       <div>
         <label htmlFor="firstName">First Name:</label>
         <Input
@@ -139,9 +143,9 @@ const StepThree: React.FC<StepThreeProps> = ({
           <Modal onSubmit={handleCloseModal} onCancel={handleCancelModal}>
             <h2>Review and submit:</h2>
             <div className="review-info">
-              <p>City: {selectedCity}</p>
+              <p>City: {selectedItem}</p>
               <p>
-                {optionsText} selected: {numericOptions.join(', ')}
+                {optionsText} selected: {checkboxOptions.join(', ')}
               </p>
               <p>First name: {userData.firstName}</p>
               <p>Last name: {userData.lastName}</p>
@@ -159,7 +163,7 @@ const StepThree: React.FC<StepThreeProps> = ({
               buttonText={'Close'}
               style={{ textAlign: 'right' }}
             >
-              <h2>{subbmisionText}</h2>
+              <h2>{submissionText}</h2>
             </Modal>
           </div>
         </>
@@ -168,4 +172,4 @@ const StepThree: React.FC<StepThreeProps> = ({
   )
 }
 
-export default StepThree
+export default InputStep

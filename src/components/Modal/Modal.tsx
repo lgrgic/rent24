@@ -14,8 +14,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   onSubmit,
   onCancel,
-  buttonText,
-  style
+  buttonText
 }) => {
   return (
     <div className="modal">

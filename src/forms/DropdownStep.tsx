@@ -1,38 +1,43 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../redux/store'
-import { setCity } from '../redux/actions'
+import { setSelectedItem } from '../redux/actions'
 import DropdownSelector from '../components/DropdownSelector/DropdownSelector'
 import Button from '../components/Button/Button'
+import { data } from '../data/cities'
 
-interface StepOneProps {
-  onNext: () => void
+interface DropdownStep {
   onPrevious: () => void
+  onNext: () => void
+  placeholder: string
+  description: string
 }
 
-const StepOne: React.FC<StepOneProps> = ({ onNext }) => {
-  const cities = useSelector((state: RootState) => state.cities)
-  const selectedCity = useSelector((state: RootState) => state.selectedCity)
+const DropdownStep: React.FC<DropdownStep> = ({
+  onNext,
+  placeholder,
+  description
+}) => {
+  const selectedItem = useSelector((state: RootState) => state.selectedItem)
   const dispatch = useDispatch()
-  const placeholder = 'Choose city'
 
-  const handleCityChange = (value: string) => {
-    dispatch(setCity(value))
+  const handleItemChange = (value: string) => {
+    dispatch(setSelectedItem(value))
   }
 
   return (
     <div className="container">
-      <p>Select a city from the dropdown below:</p>
+      <p>{description}</p>
       <DropdownSelector
-        options={cities}
-        value={selectedCity}
-        onChange={handleCityChange}
+        options={data}
+        value={selectedItem}
+        onChange={handleItemChange}
         placeholder={placeholder}
       />
       <div className="button-container">
         <Button
           onClick={onNext}
-          disabled={!selectedCity}
+          disabled={!selectedItem}
           style={{
             marginRight: 0
           }}
@@ -44,4 +49,4 @@ const StepOne: React.FC<StepOneProps> = ({ onNext }) => {
   )
 }
 
-export default StepOne
+export default DropdownStep

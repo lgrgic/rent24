@@ -1,27 +1,31 @@
 import { combineReducers } from 'redux'
-import { citiesData } from '../data/cities'
 
-const citiesReducer = (state: string[] = citiesData, action: any) => {
+interface Action {
+  type: string
+  payload: any
+}
+
+export const itemsReducer = (state: string[] = [], action: Action) => {
   switch (action.type) {
-    case 'SET_CITIES':
+    case 'SET_ITEMS':
       return action.payload
     default:
       return state
   }
 }
 
-const selectedCityReducer = (state = '', action: any) => {
+export const selectedItemReducer = (state = '', action: Action) => {
   switch (action.type) {
-    case 'SET_SELECTED_CITY':
+    case 'SET_SELECTED_ITEM':
       return action.payload
     default:
       return state
   }
 }
 
-const numericOptionsReducer = (state: number[] = [], action: any) => {
+const checkboxOptionsReducer = (state: number[] = [], action: any) => {
   switch (action.type) {
-    case 'SET_NUMERIC_OPTIONS':
+    case 'SET_CHECKBOX_OPTIONS':
       return action.payload
     default:
       return state
@@ -49,9 +53,9 @@ const isEmailValidReducer = (state = true, action: any) => {
 }
 
 export const rootReducer = combineReducers({
-  cities: citiesReducer,
-  selectedCity: selectedCityReducer,
-  numericOptions: numericOptionsReducer,
+  items: itemsReducer,
+  selectedItem: selectedItemReducer,
+  checkboxOptions: checkboxOptionsReducer,
   userData: userDataReducer,
   isEmailValid: isEmailValidReducer
 })

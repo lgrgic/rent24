@@ -1,4 +1,4 @@
-export const citiesData: string[] = [
+export const data: string[] = [
   'Berlin',
   'Hamburg',
   'Munich',
